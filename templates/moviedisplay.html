@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    {% extends 'layout.html' %}
+
+    {% block content %}
+        {% for new_movie in new_movies %}
+            <p>Movie Title: {{ new_movie['Title'] }}</p>
+            <p>Movie Genre: {{ new_movie['Genre'] }}</p>
+            <p>Movie Director: {{ new_movie['Director'] }}</p>
+            <p>Movie Year: {{ new_movie['Year'] }}</p>
+        {% endfor %}
+    {% endblock %}
+
+</body>
+</html>
