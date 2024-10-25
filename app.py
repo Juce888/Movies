@@ -4,7 +4,7 @@ from model.MovieBackend import Movie
 
 app = Flask(__name__)
 
-movies = []
+movie_dictionary = []
 
 
 @app.route('/')
@@ -24,10 +24,13 @@ def movie_info():
     movie_director = request.form['director']
     movie_year = request.form['release_year']
 
-    movies.append({"Title": movie_title, "Genre": movie_genre,
-                       "Director": movie_director, "Year": movie_year})
+    if movie_title != "":
+        movie_dictionary.append({"Title": movie_title, "Genre": movie_genre,
+                                 "Director": movie_director, "Year": movie_year})
 
-    return render_template("movie_display.html", Movie=movies)
+        return render_template("movie_display.html", Movie=movie_dictionary)
+    else:
+        return "Movie Title cannot be empty!"
 
 
 if __name__ == '__main__':
