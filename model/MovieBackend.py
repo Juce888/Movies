@@ -6,17 +6,3 @@ class Movie:
         self.genre = genre
         self.director = director
         self.year = year
-
-    def check_for_title(self, title):
-        if title == "":
-            return "Movie Title cannot be empty."
-        else:
-            return title
-
-    # def check_for_title(self, title):
-    #     for title in self.title:
-    #         if title != title:
-    #             return "Movie Title cannot be empty."
-    #         else:
-    #             return title
-

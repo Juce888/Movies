@@ -4,7 +4,7 @@ from model.MovieBackend import Movie
 
 app = Flask(__name__)
 
-new_movies = []
+movies = []
 
 
 @app.route('/')
@@ -19,20 +19,15 @@ def movie_entry():
 
 @app.route('/movie_info', methods=['POST'])
 def movie_info():
-    movie_name = request.form['movie_name']
+    movie_title = request.form['movie_title']
     movie_genre = request.form['genre']
     movie_director = request.form['director']
     movie_year = request.form['release_year']
 
-    if movie_name != '':
-        new_movie = Movie(movie_name, movie_genre, movie_director, movie_year)
+    movies.append({"Title": movie_title, "Genre": movie_genre,
+                       "Director": movie_director, "Year": movie_year})
 
-        new_movies.append({"Title": new_movie.title, "Genre": new_movie.genre,
-                           "Director": new_movie.director, "Year": new_movie.year})
-
-        return render_template("moviedisplay.html", items=new_movies)
-    else:
-        return "Movie Title Cannot be Null."
+    return render_template("movie_display.html", Movie=movies)
 
 
 if __name__ == '__main__':
